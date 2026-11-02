@@ -1,439 +1,557 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WidgetDemoApp.MainPage"
              Title="Student Hub"
-             BackgroundColor="#F3F5F9">
+             BackgroundColor="#F5F7FB">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="18">
+    <ScrollView x:Name="DashboardScrollView">
+        <VerticalStackLayout Padding="22,18,22,32" Spacing="22">
 
-            <!-- Header -->
-            <VerticalStackLayout Spacing="4">
-                <Label x:Name="GreetingLabel"
-                       Text="Hello, Student!"
-                       FontSize="28"
-                       FontAttributes="Bold"
-                       TextColor="#172033"/>
+            <Grid ColumnDefinitions="*,52"
+                  ColumnSpacing="10">
+                <HorizontalStackLayout Spacing="12"
+                                       VerticalOptions="Center">
+                    <VerticalStackLayout Spacing="4"
+                                         VerticalOptions="Center">
+                        <Label Text="STUDENT HUB"
+                               FontSize="11"
+                               FontAttributes="Bold"
+                               CharacterSpacing="1.4"
+                               TextColor="#74809A"/>
+                        <Label x:Name="GreetingLabel"
+                               Text="Hello, Akash!"
+                               FontSize="27"
+                               FontAttributes="Bold"
+                               TextColor="#17233B"/>
+                        <Label x:Name="DateLabel"
+                               FontSize="13"
+                               TextColor="#7B879D"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
 
-                <Label x:Name="DateLabel"
-                       FontSize="13"
-                       TextColor="#7B8495"/>
-            </VerticalStackLayout>
+                <AbsoluteLayout Grid.Column="1"
+                                WidthRequest="52"
+                                HeightRequest="52"
+                                VerticalOptions="Center">
+                    <ImageButton Source="notification_bell.svg"
+                                 WidthRequest="50"
+                                 HeightRequest="50"
+                                 Padding="14"
+                                 BackgroundColor="White"
+                                 CornerRadius="16"
+                                 AbsoluteLayout.LayoutBounds="0,0,50,50"
+                                 AbsoluteLayout.LayoutFlags="None"
+                                 Clicked="OnNotificationsClicked"
+                                 SemanticProperties.Description="Notifications"/>
+                    <Border WidthRequest="12"
+                            HeightRequest="12"
+                            BackgroundColor="#F05B66"
+                            Stroke="White"
+                            StrokeThickness="2"
+                            StrokeShape="Ellipse"
+                            AbsoluteLayout.LayoutBounds="38,1,12,12"
+                            AbsoluteLayout.LayoutFlags="None"/>
+                </AbsoluteLayout>
+            </Grid>
 
-            <!-- Student Profile -->
-            <Border BackgroundColor="White"
+            <Border x:Name="ProfileDetails"
+                    BackgroundColor="White"
                     StrokeThickness="0"
                     Padding="18"
-                    StrokeShape="RoundRectangle 18">
-
-                <VerticalStackLayout Spacing="12">
-
-                    <Label Text="STUDENT PROFILE"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           TextColor="#64748B"/>
-
-                    <Grid ColumnDefinitions="Auto,*"
+                    StrokeShape="RoundRectangle 24">
+                <VerticalStackLayout Spacing="17">
+                    <Grid ColumnDefinitions="78,*"
                           ColumnSpacing="14">
-
-                        <Border WidthRequest="65"
-                                HeightRequest="65"
-                                BackgroundColor="#DBEAFE"
-                                StrokeThickness="0"
-                                StrokeShape="RoundRectangle 35"
-                                VerticalOptions="Center">
-
-                            <Label Text="AP"
-                                   FontSize="23"
-                                   FontAttributes="Bold"
-                                   TextColor="#2563EB"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
-                        </Border>
+                        <Image Source="profile_avatar.svg"
+                               WidthRequest="78"
+                               HeightRequest="78"
+                               Aspect="AspectFill"
+                               VerticalOptions="Center"/>
 
                         <VerticalStackLayout Grid.Column="1"
-                                             VerticalOptions="Center"
-                                             Spacing="4">
-
-                            <Label Text="Akash Patil"
-                                   FontSize="20"
+                                             Spacing="5"
+                                             VerticalOptions="Center">
+                            <Label Text="YOUR PROFILE"
+                                   FontSize="10"
                                    FontAttributes="Bold"
-                                   TextColor="#172033"/>
-
+                                   CharacterSpacing="1.2"
+                                   TextColor="#71809A"/>
+                            <Label Text="Akash Patil"
+                                   FontSize="21"
+                                   FontAttributes="Bold"
+                                   TextColor="#17233B"/>
                             <Label Text="Computer Engineering Student"
-                                   FontSize="13"
-                                   TextColor="#64748B"/>
-
-                            <Label Text="Interested in Software Development"
                                    FontSize="12"
-                                   TextColor="#64748B"/>
+                                   TextColor="#74809A"/>
+                            <Label Text="Building a little every day"
+                                   FontSize="12"
+                                   TextColor="#4169C8"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*,*"
+                          ColumnSpacing="4"
+                          Padding="0,3">
+                        <VerticalStackLayout Spacing="3"
+                                             HorizontalOptions="Center">
+                            <Label Text="24"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="#17233B"/>
+                            <Label Text="POSTS"
+                                   FontSize="10"
+                                   CharacterSpacing="0.8"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="#8792A7"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1"
+                                             Spacing="3"
+                                             HorizontalOptions="Center">
+                            <Label Text="1.2k"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="#17233B"/>
+                            <Label Text="FOLLOWERS"
+                                   FontSize="10"
+                                   CharacterSpacing="0.8"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="#8792A7"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2"
+                                             Spacing="3"
+                                             HorizontalOptions="Center">
+                            <Label Text="368"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="#17233B"/>
+                            <Label Text="FOLLOWING"
+                                   FontSize="10"
+                                   CharacterSpacing="0.8"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="#8792A7"/>
                         </VerticalStackLayout>
                     </Grid>
 
                     <Grid ColumnDefinitions="*,*"
                           ColumnSpacing="10">
-
                         <Button x:Name="LikeButton"
-                                Text="♥ Like (0)"
+                                Text="Like (0)"
                                 Clicked="OnLikeClicked"
-                                BackgroundColor="#2563EB"
+                                BackgroundColor="#4268C9"
                                 TextColor="White"
-                                CornerRadius="10"/>
-
+                                CornerRadius="13"
+                                FontAttributes="Bold"/>
                         <Button Grid.Column="1"
                                 Text="Message"
                                 Clicked="OnMessageClicked"
-                                BackgroundColor="#E8EEF9"
-                                TextColor="#2563EB"
-                                CornerRadius="10"/>
+                                BackgroundColor="#EEF2FC"
+                                TextColor="#365BB7"
+                                CornerRadius="13"
+                                FontAttributes="Bold"/>
                     </Grid>
-
-                    <Label Text="Leave a comment"
-                           FontAttributes="Bold"
-                           FontSize="14"
-                           TextColor="#172033"/>
-
-                    <Grid ColumnDefinitions="*,Auto"
-                          ColumnSpacing="8">
-
-                        <Entry x:Name="CommentEntry"
-                               Placeholder="Write your comment..."
-                               BackgroundColor="#F3F5F9"
-                               TextColor="#172033"
-                               PlaceholderColor="#94A3B8"
-                               Completed="OnCommentCompleted"/>
-
-                        <Button Grid.Column="1"
-                                Text="Post"
-                                Clicked="OnCommentClicked"
-                                BackgroundColor="#2563EB"
-                                TextColor="White"
-                                CornerRadius="10"/>
-                    </Grid>
-
-                    <Label x:Name="CommentLabel"
-                           Text="No comments yet."
-                           FontSize="13"
-                           TextColor="#64748B"/>
-
-                    <Grid ColumnDefinitions="*,Auto">
-                        <Label Text="Enable notifications"
-                               VerticalOptions="Center"
-                               FontSize="14"
-                               TextColor="#172033"/>
-
-                        <Switch x:Name="NotificationSwitch"
-                                Grid.Column="1"
-                                IsToggled="True"
-                                Toggled="OnSwitchToggled"/>
-                    </Grid>
-
-                    <Label x:Name="StatusLabel"
-                           Text="Notifications are enabled."
-                           FontSize="12"
-                           TextColor="#16A34A"/>
                 </VerticalStackLayout>
             </Border>
 
-            <!-- Dashboard Statistics -->
-            <Label Text="My Dashboard"
-                   FontSize="21"
-                   FontAttributes="Bold"
-                   TextColor="#172033"/>
-
-            <Grid ColumnDefinitions="*,*,*"
-                  ColumnSpacing="10">
-
-                <Border BackgroundColor="#DBEAFE"
-                        Padding="12"
-                        StrokeThickness="0"
-                        StrokeShape="RoundRectangle 14">
-
-                    <VerticalStackLayout Spacing="5">
-                        <Label Text="TOTAL"
-                               FontSize="11"
-                               TextColor="#1D4ED8"/>
-
-                        <Label x:Name="TotalTasksLabel"
-                               Text="0"
-                               FontSize="25"
+            <VerticalStackLayout Spacing="12">
+                <Grid ColumnDefinitions="*,Auto"
+                      VerticalOptions="Center">
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Your study snapshot"
+                               FontSize="20"
                                FontAttributes="Bold"
-                               TextColor="#1D4ED8"/>
-
-                        <Label Text="Tasks"
-                               FontSize="12"
-                               TextColor="#1D4ED8"/>
+                               TextColor="#17233B"/>
+                        <Label Text="Small steps add up."
+                               FontSize="13"
+                               TextColor="#7B879D"/>
                     </VerticalStackLayout>
-                </Border>
-
-                <Border Grid.Column="1"
-                        BackgroundColor="#DCFCE7"
-                        Padding="12"
-                        StrokeThickness="0"
-                        StrokeShape="RoundRectangle 14">
-
-                    <VerticalStackLayout Spacing="5">
-                        <Label Text="DONE"
-                               FontSize="11"
-                               TextColor="#15803D"/>
-
-                        <Label x:Name="CompletedTasksLabel"
-                               Text="0"
-                               FontSize="25"
-                               FontAttributes="Bold"
-                               TextColor="#15803D"/>
-
-                        <Label Text="Tasks"
-                               FontSize="12"
-                               TextColor="#15803D"/>
-                    </VerticalStackLayout>
-                </Border>
-
-                <Border Grid.Column="2"
-                        BackgroundColor="#FEF3C7"
-                        Padding="12"
-                        StrokeThickness="0"
-                        StrokeShape="RoundRectangle 14">
-
-                    <VerticalStackLayout Spacing="5">
-                        <Label Text="PENDING"
-                               FontSize="11"
-                               TextColor="#B45309"/>
-
-                        <Label x:Name="PendingTasksLabel"
-                               Text="0"
-                               FontSize="25"
-                               FontAttributes="Bold"
-                               TextColor="#B45309"/>
-
-                        <Label Text="Tasks"
-                               FontSize="12"
-                               TextColor="#B45309"/>
-                    </VerticalStackLayout>
-                </Border>
-            </Grid>
-
-            <!-- Task Management -->
-            <Border BackgroundColor="White"
-                    Padding="16"
-                    StrokeThickness="0"
-                    StrokeShape="RoundRectangle 18">
-
-                <VerticalStackLayout Spacing="12">
-
-                    <Label Text="Task Management"
-                           FontSize="19"
+                    <Label Grid.Column="1"
+                           Text="THIS WEEK"
+                           FontSize="10"
                            FontAttributes="Bold"
-                           TextColor="#172033"/>
+                           CharacterSpacing="0.8"
+                           TextColor="#71809A"
+                           VerticalOptions="Center"/>
+                </Grid>
 
-                    <Entry x:Name="TaskEntry"
-                           Placeholder="Enter a new task"
-                           BackgroundColor="#F3F5F9"
-                           TextColor="#172033"
-                           PlaceholderColor="#94A3B8"/>
+                <Grid ColumnDefinitions="*,*,*"
+                      ColumnSpacing="10">
+                    <Border BackgroundColor="#E8F0FF"
+                            Padding="13"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 18">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="TOTAL"
+                                   FontSize="10"
+                                   FontAttributes="Bold"
+                                   TextColor="#4971C8"/>
+                            <Label x:Name="TotalTasksLabel"
+                                   Text="0"
+                                   FontSize="26"
+                                   FontAttributes="Bold"
+                                   TextColor="#3159B2"/>
+                            <Label Text="tasks"
+                                   FontSize="12"
+                                   TextColor="#5270B4"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="1"
+                            BackgroundColor="#E7F7EF"
+                            Padding="13"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 18">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="DONE"
+                                   FontSize="10"
+                                   FontAttributes="Bold"
+                                   TextColor="#27835A"/>
+                            <Label x:Name="CompletedTasksLabel"
+                                   Text="0"
+                                   FontSize="26"
+                                   FontAttributes="Bold"
+                                   TextColor="#20744D"/>
+                            <Label Text="tasks"
+                                   FontSize="12"
+                                   TextColor="#408465"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="2"
+                            BackgroundColor="#FFF3E3"
+                            Padding="13"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 18">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="TO DO"
+                                   FontSize="10"
+                                   FontAttributes="Bold"
+                                   TextColor="#B97728"/>
+                            <Label x:Name="PendingTasksLabel"
+                                   Text="0"
+                                   FontSize="26"
+                                   FontAttributes="Bold"
+                                   TextColor="#A9681F"/>
+                            <Label Text="tasks"
+                                   FontSize="12"
+                                   TextColor="#A97439"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+            </VerticalStackLayout>
 
-                    <Button Text="+ Add Task"
-                            Clicked="OnAddTaskClicked"
-                            BackgroundColor="#2563EB"
-                            TextColor="White"
-                            CornerRadius="10"/>
+            <Border BackgroundColor="White"
+                    Padding="17"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 22">
+                <VerticalStackLayout Spacing="13">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Spacing="3">
+                            <Label Text="A note from you"
+                                   FontSize="17"
+                                   FontAttributes="Bold"
+                                   TextColor="#17233B"/>
+                            <Label Text="Share a thought or encouragement."
+                                   FontSize="12"
+                                   TextColor="#7B879D"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1"
+                               Text="CONNECT"
+                               FontSize="10"
+                               FontAttributes="Bold"
+                               CharacterSpacing="0.8"
+                               TextColor="#71809A"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="*,Auto"
+                          ColumnSpacing="8">
+                        <Entry x:Name="CommentEntry"
+                               Placeholder="Write your comment..."
+                               BackgroundColor="#F3F5FA"
+                               TextColor="#17233B"
+                               PlaceholderColor="#94A0B4"
+                               ClearButtonVisibility="WhileEditing"
+                               Completed="OnCommentCompleted"/>
+                        <Button Grid.Column="1"
+                                Text="Post"
+                                Clicked="OnCommentClicked"
+                                BackgroundColor="#4268C9"
+                                TextColor="White"
+                                CornerRadius="12"
+                                FontAttributes="Bold"/>
+                    </Grid>
+                    <Label x:Name="CommentLabel"
+                           Text="No comments yet."
+                           FontSize="12"
+                           TextColor="#71809A"/>
+                    <BoxView HeightRequest="1"
+                             BackgroundColor="#EEF1F6"/>
+                    <Grid ColumnDefinitions="*,Auto"
+                          ColumnSpacing="12">
+                        <VerticalStackLayout Spacing="2"
+                                             VerticalOptions="Center">
+                            <Label Text="Notifications"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#24314A"/>
+                            <Label x:Name="StatusLabel"
+                                   Text="Notifications are enabled."
+                                   FontSize="12"
+                                   TextColor="#27835A"/>
+                        </VerticalStackLayout>
+                        <Switch x:Name="NotificationSwitch"
+                                Grid.Column="1"
+                                IsToggled="True"
+                                Toggled="OnSwitchToggled"
+                                VerticalOptions="Center"
+                                OnColor="#4268C9"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="White"
+                    Padding="17"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 22">
+                <VerticalStackLayout Spacing="12">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Spacing="3">
+                            <Label Text="Skills I'm growing"
+                                   FontSize="17"
+                                   FontAttributes="Bold"
+                                   TextColor="#17233B"/>
+                            <Label Text="A few things in my toolkit."
+                                   FontSize="12"
+                                   TextColor="#7B879D"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1"
+                               Text="SKILLS"
+                               FontSize="10"
+                               FontAttributes="Bold"
+                               CharacterSpacing="0.8"
+                               TextColor="#71809A"
+                               VerticalOptions="Center"/>
+                    </Grid>
+
+                    <FlexLayout BindableLayout.ItemsSource="{Binding Skills}"
+                                Direction="Row"
+                                Wrap="Wrap"
+                                JustifyContent="Start"
+                                AlignItems="Start"
+                                AlignContent="Start">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Border BackgroundColor="#EDF2FF"
+                                        Padding="13,8"
+                                        Margin="0,0,8,8"
+                                        StrokeThickness="0"
+                                        HorizontalOptions="Start"
+                                        StrokeShape="RoundRectangle 14">
+                                    <Label Text="{Binding .}"
+                                           FontSize="12"
+                                           FontAttributes="Bold"
+                                           TextColor="#4264B5"/>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="White"
+                    Padding="17"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 22">
+                <VerticalStackLayout Spacing="12">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Spacing="3">
+                            <Label Text="My tasks"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#17233B"/>
+                            <Label Text="Keep your next steps in sight."
+                                   FontSize="12"
+                                   TextColor="#7B879D"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1"
+                               Text="PLANNER"
+                               FontSize="10"
+                               FontAttributes="Bold"
+                               CharacterSpacing="0.8"
+                               TextColor="#71809A"
+                               VerticalOptions="Center"/>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,Auto"
+                          ColumnSpacing="8">
+                        <Entry x:Name="TaskEntry"
+                               Placeholder="Add a task to your list"
+                               BackgroundColor="#F3F5FA"
+                               TextColor="#17233B"
+                               PlaceholderColor="#94A0B4"
+                               ReturnType="Done"
+                               Completed="OnAddTaskClicked"/>
+                        <Button Grid.Column="1"
+                                Text="Add"
+                                Clicked="OnAddTaskClicked"
+                                BackgroundColor="#4268C9"
+                                TextColor="White"
+                                CornerRadius="12"
+                                FontAttributes="Bold"/>
+                    </Grid>
 
                     <SearchBar x:Name="TaskSearchBar"
                                Placeholder="Search tasks"
                                TextChanged="OnTaskSearchTextChanged"
-                               BackgroundColor="#F3F5F9"
-                               TextColor="#172033"
-                               PlaceholderColor="#94A3B8"/>
+                               BackgroundColor="#F3F5FA"
+                               TextColor="#17233B"
+                               PlaceholderColor="#94A0B4"/>
 
                     <CollectionView ItemsSource="{Binding VisibleTasks}"
                                     SelectionMode="None"
-                                    HeightRequest="240">
-
+                                    HeightRequest="220">
                         <CollectionView.EmptyView>
-                            <Label Text="No tasks found."
-                                   TextColor="#64748B"
+                            <Label Text="No matching tasks."
+                                   TextColor="#71809A"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"
                                    Padding="15"/>
                         </CollectionView.EmptyView>
-
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid ColumnDefinitions="Auto,*,Auto"
-                                      Padding="5"
+                                      Padding="4,7"
                                       ColumnSpacing="8">
-
                                     <CheckBox IsChecked="{Binding IsCompleted}"
                                               CheckedChanged="OnTaskCheckedChanged"
                                               VerticalOptions="Center"
-                                              Color="#2563EB"/>
-
+                                              Color="#4268C9"/>
                                     <VerticalStackLayout Grid.Column="1"
                                                          VerticalOptions="Center"
                                                          Spacing="2">
-
                                         <Label Text="{Binding Title}"
-                                               FontSize="14"
-                                               TextColor="#172033"/>
-
+                                               FontSize="13"
+                                               TextColor="#24314A"/>
                                         <Label Text="{Binding StatusText}"
                                                FontSize="11"
-                                               TextColor="#64748B"/>
+                                               TextColor="#8591A6"/>
                                     </VerticalStackLayout>
-
                                     <Button Grid.Column="2"
-                                            Text="Delete"
+                                            Text="Remove"
                                             FontSize="11"
-                                            Padding="8,4"
-                                            BackgroundColor="#FEE2E2"
-                                            TextColor="#B91C1C"
-                                            CornerRadius="8"
+                                            Padding="9,5"
+                                            BackgroundColor="#FFF0EF"
+                                            TextColor="#C14C4B"
+                                            CornerRadius="9"
                                             Clicked="OnDeleteTaskClicked"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-
                 </VerticalStackLayout>
             </Border>
 
-            <!-- Attendance -->
             <Border BackgroundColor="White"
-                    Padding="16"
+                    Padding="17"
                     StrokeThickness="0"
-                    StrokeShape="RoundRectangle 18">
-
-                <VerticalStackLayout Spacing="12">
-
-                    <Label Text="Attendance Tracker"
-                           FontSize="19"
-                           FontAttributes="Bold"
-                           TextColor="#172033"/>
-
+                    StrokeShape="RoundRectangle 22">
+                <VerticalStackLayout Spacing="13">
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Attendance"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#17233B"/>
+                        <Label Text="Keep showing up for your goals."
+                               FontSize="12"
+                               TextColor="#7B879D"/>
+                    </VerticalStackLayout>
                     <Grid ColumnDefinitions="*,*"
                           ColumnSpacing="10">
-
-                        <Button Text="Mark Present"
+                        <Button Text="Mark present"
                                 Clicked="OnPresentClicked"
-                                BackgroundColor="#16A34A"
+                                BackgroundColor="#27835A"
                                 TextColor="White"
-                                CornerRadius="10"/>
-
+                                CornerRadius="12"
+                                FontAttributes="Bold"/>
                         <Button Grid.Column="1"
-                                Text="Mark Absent"
+                                Text="Mark absent"
                                 Clicked="OnAbsentClicked"
-                                BackgroundColor="#DC2626"
-                                TextColor="White"
-                                CornerRadius="10"/>
+                                BackgroundColor="#FFF0EF"
+                                TextColor="#C14C4B"
+                                CornerRadius="12"
+                                FontAttributes="Bold"/>
                     </Grid>
-
                     <Label x:Name="AttendanceLabel"
                            Text="Present: 0 | Absent: 0"
-                           FontSize="14"
-                           TextColor="#172033"/>
-
+                           FontSize="13"
+                           TextColor="#35425A"/>
                     <ProgressBar x:Name="AttendanceProgress"
                                  Progress="0"
-                                 ProgressColor="#16A34A"
-                                 BackgroundColor="#E2E8F0"/>
-
+                                 ProgressColor="#27835A"
+                                 BackgroundColor="#E8ECF2"/>
                     <Label x:Name="AttendancePercentageLabel"
                            Text="Attendance: 0%"
-                           FontSize="13"
-                           TextColor="#64748B"/>
+                           FontSize="12"
+                           TextColor="#7B879D"/>
                 </VerticalStackLayout>
             </Border>
 
-            <!-- Skills -->
             <Border BackgroundColor="White"
-                    Padding="16"
+                    Padding="17"
                     StrokeThickness="0"
-                    StrokeShape="RoundRectangle 18">
-
+                    StrokeShape="RoundRectangle 22">
                 <VerticalStackLayout Spacing="12">
-
-                    <Label Text="Technical Skills"
-                           FontSize="19"
-                           FontAttributes="Bold"
-                           TextColor="#172033"/>
-
-                    <CollectionView ItemsSource="{Binding Skills}"
-                                    ItemsLayout="HorizontalList"
-                                    HeightRequest="48"
-                                    SelectionMode="None">
-
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Border BackgroundColor="#DBEAFE"
-                                        Padding="12,8"
-                                        Margin="3"
-                                        StrokeThickness="0"
-                                        StrokeShape="RoundRectangle 12">
-
-                                    <Label Text="{Binding .}"
-                                           FontSize="13"
-                                           TextColor="#1D4ED8"
-                                           VerticalOptions="Center"/>
-                                </Border>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </VerticalStackLayout>
-            </Border>
-
-            <!-- Notes -->
-            <Border BackgroundColor="White"
-                    Padding="16"
-                    StrokeThickness="0"
-                    StrokeShape="RoundRectangle 18">
-
-                <VerticalStackLayout Spacing="12">
-
-                    <Label Text="Quick Notes"
-                           FontSize="19"
-                           FontAttributes="Bold"
-                           TextColor="#172033"/>
-
-                    <Entry x:Name="NoteEntry"
-                           Placeholder="Write a note..."
-                           BackgroundColor="#F3F5F9"
-                           TextColor="#172033"
-                           PlaceholderColor="#94A3B8"/>
-
-                    <Button Text="+ Add Note"
-                            Clicked="OnAddNoteClicked"
-                            BackgroundColor="#2563EB"
-                            TextColor="White"
-                            CornerRadius="10"/>
-
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Quick notes"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#17233B"/>
+                        <Label Text="Save a thought for later."
+                               FontSize="12"
+                               TextColor="#7B879D"/>
+                    </VerticalStackLayout>
+                    <Grid ColumnDefinitions="*,Auto"
+                          ColumnSpacing="8">
+                        <Entry x:Name="NoteEntry"
+                               Placeholder="Write a note..."
+                               BackgroundColor="#F3F5FA"
+                               TextColor="#17233B"
+                               PlaceholderColor="#94A0B4"
+                               ReturnType="Done"
+                               Completed="OnAddNoteClicked"/>
+                        <Button Grid.Column="1"
+                                Text="Save"
+                                Clicked="OnAddNoteClicked"
+                                BackgroundColor="#4268C9"
+                                TextColor="White"
+                                CornerRadius="12"
+                                FontAttributes="Bold"/>
+                    </Grid>
                     <CollectionView ItemsSource="{Binding Notes}"
                                     SelectionMode="None"
                                     HeightRequest="150">
-
                         <CollectionView.EmptyView>
-                            <Label Text="No notes added yet."
-                                   TextColor="#64748B"
+                            <Label Text="No notes saved yet."
+                                   TextColor="#71809A"
                                    HorizontalOptions="Center"
                                    Padding="12"/>
                         </CollectionView.EmptyView>
-
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid ColumnDefinitions="*,Auto"
                                       Padding="6">
-
                                     <Label Text="{Binding Text}"
-                                           FontSize="14"
-                                           TextColor="#172033"
+                                           FontSize="13"
+                                           TextColor="#35425A"
                                            VerticalOptions="Center"/>
-
                                     <Button Grid.Column="1"
                                             Text="Remove"
                                             FontSize="11"
-                                            Padding="8,4"
-                                            BackgroundColor="#FEE2E2"
-                                            TextColor="#B91C1C"
-                                            CornerRadius="8"
+                                            Padding="9,5"
+                                            BackgroundColor="#FFF0EF"
+                                            TextColor="#C14C4B"
+                                            CornerRadius="9"
                                             Clicked="OnDeleteNoteClicked"/>
                                 </Grid>
                             </DataTemplate>
@@ -442,11 +560,20 @@
                 </VerticalStackLayout>
             </Border>
 
-            <Label Text="Student Hub • Built with .NET MAUI"
-                   FontSize="12"
-                   TextColor="#94A3B8"
+            <Button Text="View full profile"
+                    Clicked="OnViewProfileClicked"
+                    BackgroundColor="#4268C9"
+                    TextColor="White"
+                    CornerRadius="15"
+                    FontAttributes="Bold"
+                    HeightRequest="52"/>
+
+            <Label Text="STUDENT HUB  ·  MADE FOR YOUR NEXT STEP"
+                   FontSize="10"
+                   CharacterSpacing="1"
+                   TextColor="#9AA4B6"
                    HorizontalOptions="Center"
-                   Margin="0,5,0,15"/>
+                   Margin="0,0,0,8"/>
 
         </VerticalStackLayout>
     </ScrollView>
